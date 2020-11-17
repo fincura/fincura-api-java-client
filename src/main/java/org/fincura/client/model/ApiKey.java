@@ -23,13 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.UUID;
 import org.threeten.bp.OffsetDateTime;
 
 /**
  * ApiKey
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-16T22:01:35.618Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-17T21:24:18.400Z[GMT]")
 public class ApiKey {
   public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
@@ -41,7 +40,7 @@ public class ApiKey {
 
   public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";
   @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)
-  private UUID accessToken;
+  private String accessToken;
 
   public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expiration_date";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
@@ -99,7 +98,7 @@ public class ApiKey {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public UUID getAccessToken() {
+  public String getAccessToken() {
     return accessToken;
   }
 

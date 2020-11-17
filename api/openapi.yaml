@@ -208,12 +208,12 @@ paths:
         6e64724a-25fc-4e1a-8071-1ef29845ab1d\",\n        \"media_type\": \"application/pdf\"\
         \"\n    }\n    \n\nThe above request will create a new document record in\
         \ Fincura and return a url to send the file to, as seen below.\n\n    {\n\
-        \        \"uuid\": \"b1dc3e36-f332-4653-bfab-0b923fc2548f\",\n        \"upload_url\"\
-        : \"https://upload.fincura.com/b1dc3e36-f332-4653-bfab-0b923fc2548f/document.pdf?signature=mWFg4xsgm4EtFEt\"\
+        \        \"uuid\": \"fb5a2c2b-d3fa-4015-a801-a01e44503d94\",\n        \"upload_url\"\
+        : \"https://upload.fincura.com/fb5a2c2b-d3fa-4015-a801-a01e44503d94/document.pdf?signature=mWFg4xsgm4EtFEt\"\
         \n    }\n\nIn a subsequent request, the file can be sent to the `upload_url`\
         \ via [HTTP PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT).\
         \ The `Content-Length` and `Content-Type` headers are required. The `Content-Type`\
-        \ should match the `media_type` from the previous request.\n\n    PUT /b1dc3e36-f332-4653-bfab-0b923fc2548f/document.pdf?signature=mWFg4xsgm4EtFEt\
+        \ should match the `media_type` from the previous request.\n\n    PUT /fb5a2c2b-d3fa-4015-a801-a01e44503d94/document.pdf?signature=mWFg4xsgm4EtFEt\
         \ HTTP/1.1\n    Host: upload.fincura.com\n    Content-Length: 18828\n    Content-Type:\
         \ application/pdf\n    \n    {FILE  DATA}\n\nFincura will begin processing\
         \ the file once it has been completely uploaded.\n\nAdditional fields described\
@@ -2021,7 +2021,7 @@ components:
     ApiKey:
       example:
         tenant_id: tenant_id
-        access_token: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        access_token: access_token
         refresh_token: refresh_token
         expiration_date: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -2034,7 +2034,6 @@ components:
           type: string
           writeOnly: true
         access_token:
-          format: uuid
           readOnly: true
           type: string
         expiration_date:

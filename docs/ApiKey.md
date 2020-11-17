@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **refreshToken** | **String** |  | 
 **tenantId** | **String** |  | 
-**accessToken** | [**UUID**](UUID.md) |  |  [optional] [readonly]
+**accessToken** | **String** |  |  [optional] [readonly]
 **expirationDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional] [readonly]
 
 

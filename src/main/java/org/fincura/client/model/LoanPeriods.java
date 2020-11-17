@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * LoanPeriods
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-16T22:01:35.618Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-17T21:24:18.400Z[GMT]")
 public class LoanPeriods {
   public static final String SERIALIZED_NAME_REPORTING_PERIOD = "reporting_period";
   @SerializedName(SERIALIZED_NAME_REPORTING_PERIOD)

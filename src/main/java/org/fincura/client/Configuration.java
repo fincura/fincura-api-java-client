@@ -13,7 +13,7 @@
 
 package org.fincura.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-16T22:01:35.618Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-17T21:24:18.400Z[GMT]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

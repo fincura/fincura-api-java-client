@@ -28,7 +28,7 @@ import org.fincura.client.model.DataViewCalculatedValue;
 /**
  * DataViewCells
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-16T22:01:35.618Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-11-17T21:24:18.400Z[GMT]")
 public class DataViewCells {
   public static final String SERIALIZED_NAME_CALCULATED_VALUE = "calculated_value";
   @SerializedName(SERIALIZED_NAME_CALCULATED_VALUE)
