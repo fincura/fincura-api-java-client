@@ -6,38 +6,38 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | [**UUID**](UUID.md) |  |  [optional] [readonly]
+**uuid** | **UUID** |  |  [optional] [readonly]
 **title** | **String** | Title of the Loan. Must be unique for the Borrower | 
 **description** | **String** |  |  [optional]
-**createdDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional] [readonly]
+**createdDate** | **OffsetDateTime** |  |  [optional] [readonly]
 **externalId** | **String** | External ID is used to uniquely identify a record from your system in our system. Must be unique across records. |  [optional]
 **loanId** | **String** |  |  [optional]
 **contractType** | [**ContractTypeEnum**](#ContractTypeEnum) |  |  [optional]
-**borrowerUuid** | [**UUID**](UUID.md) | UUID of the borrower for this loan. (see [Borrowers](#tag/Borrowers)) | 
+**borrowerUuid** | **UUID** | UUID of the borrower for this loan. (see [Borrowers](#tag/Borrowers)) | 
 **borrowerInfo** | [**LoanBorrowerInfo**](LoanBorrowerInfo.md) |  | 
-**principal** | [**BigDecimal**](BigDecimal.md) | Original principal value | 
-**interestRate** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**principal** | **BigDecimal** | Original principal value | 
+**interestRate** | **BigDecimal** |  |  [optional]
 **interestType** | [**InterestTypeEnum**](#InterestTypeEnum) |  |  [optional]
 **termMonths** | **Integer** |  | 
 **paymentType** | [**PaymentTypeEnum**](#PaymentTypeEnum) |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) |  |  [optional]
 **paymentStatus** | [**PaymentStatusEnum**](#PaymentStatusEnum) |  |  [optional]
-**startDate** | [**LocalDate**](LocalDate.md) |  |  [optional]
-**endDate** | [**LocalDate**](LocalDate.md) | Loan end date. Calculated field |  [optional] [readonly]
-**monthlyPayment** | [**BigDecimal**](BigDecimal.md) | calculated field |  [optional] [readonly]
+**startDate** | **LocalDate** |  |  [optional]
+**endDate** | **LocalDate** | Loan end date. Calculated field |  [optional] [readonly]
+**monthlyPayment** | **BigDecimal** | calculated field |  [optional] [readonly]
 **paymentsRemaining** | **Integer** | Calculated field |  [optional] [readonly]
-**outstandingPrincipal** | [**BigDecimal**](BigDecimal.md) | calculated field |  [optional] [readonly]
-**interestAccrued** | [**BigDecimal**](BigDecimal.md) | calculated field |  [optional] [readonly]
-**loanToValue** | [**BigDecimal**](BigDecimal.md) | calculated field |  [optional] [readonly]
+**outstandingPrincipal** | **BigDecimal** | calculated field |  [optional] [readonly]
+**interestAccrued** | **BigDecimal** | calculated field |  [optional] [readonly]
+**loanToValue** | **BigDecimal** | calculated field |  [optional] [readonly]
 **scorecard** | [**ScorecardEnum**](#ScorecardEnum) |  |  [optional]
 **collateralType** | [**CollateralTypeEnum**](#CollateralTypeEnum) |  |  [optional]
-**collateralValue** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**collateralValue** | **BigDecimal** |  |  [optional]
 **collateralLifeMonths** | **Integer** | The life of the collateral in months |  [optional]
-**residualValue** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**balloonPayment** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**lastPaymentDate** | [**LocalDate**](LocalDate.md) |  |  [optional]
+**residualValue** | **BigDecimal** |  |  [optional]
+**balloonPayment** | **BigDecimal** |  |  [optional]
+**lastPaymentDate** | **LocalDate** |  |  [optional]
 **complianceInfo** | [**LoanComplianceInfo**](LoanComplianceInfo.md) |  |  [optional]
-**templateUuid** | [**UUID**](UUID.md) | DSRC template to use for finanical information |  [optional]
+**templateUuid** | **UUID** | DSRC template to use for finanical information |  [optional]
 **periods** | [**List&lt;LoanPeriods&gt;**](LoanPeriods.md) | ReportingPeriod&#39;s to include in the loan financial information |  [optional]
 **documents** | [**List&lt;LoanDocuments&gt;**](LoanDocuments.md) | Additional DocumentFile&#39;s to be included with loan information |  [optional]
 **financials** | [**LoanFinancials**](LoanFinancials.md) |  |  [optional]

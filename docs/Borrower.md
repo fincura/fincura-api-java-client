@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | [**UUID**](UUID.md) |  |  [optional] [readonly]
+**uuid** | **UUID** |  |  [optional] [readonly]
 **name** | **String** | Name of the Borrower. Must be unique across Borrower records | 
-**createdDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional] [readonly]
-**portfolioUuid** | [**UUID**](UUID.md) | UUID of the Portfolio for this Borrower. (see [Portfolios](#tag/Portfolios)) |  [optional]
+**createdDate** | **OffsetDateTime** |  |  [optional] [readonly]
+**portfolioUuid** | **UUID** | UUID of the Portfolio for this Borrower. (see [Portfolios](#tag/Portfolios)) |  [optional]
 **externalId** | **String** | External ID is used to uniquely identify a record from your system in our system. Must be unique across records. |  [optional]
 **contactEmail** | **String** | Borrower contact email |  [optional]
 **contactPerson** | **String** | Borrower contact Full Name |  [optional]

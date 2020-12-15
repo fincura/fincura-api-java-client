@@ -1,5 +1,8 @@
 openapi: 3.0.2
 info:
+  contact:
+    email: support@fincura.com
+    name: Fincura Engineering
   description: "This [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)\
     \ allows you to interact with the Fincura processing and insights engine. \n\n\
     # Authentication\n\nThis API uses API keys generated from a Fincura User account.\
@@ -9,13 +12,14 @@ info:
     \ | ------------ |\n| PDF File | .pdf | `application/pdf` , `application/x-pdf`\
     \ |\n| Excel File | .xls | `application/vnd.ms-excel`  |\n| Excel File | .xlsx\
     \ | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`  |\n|\
+    \ Excel File | .xlsm | `application/vnd.ms-excel.sheet.macroEnabled.12`  |\n|\
     \ PNG Image | .png | `image/png`  |\n| GIF Image | .gif | `image/gif`  |\n| JPG\
     \ Image | .jpg, .jpeg | `image/jpeg`  |\n| GIF Image | .gif | `image/gif`  |\n\
     \n\n# Getting Started\n\n1. [Create a Borrower](#operation/createBorrower) \n\
     2. [Add a file](#operation/createDocumentFile) for that Borrower.\n3. Analyze\
     \ in the Fincura App\n\n****"
-  title: Fincura Integration API
-  version: 1.2.5
+  title: Fincura API
+  version: 1.2.6
   x-logo:
     url: https://manual-public-web-static-resources.s3.amazonaws.com/public-api/fincura_square.png
 servers:
@@ -42,16 +46,20 @@ tags:
     | DocumentFile.Processing | File is being processed by the Fincura Pipeline |\
     \ \n| DocumentFile.HumanRequired | Human Intervention is required for file | \n\
     | DocumentFile.SpreadComplete | File data spread to a template (data now normalized/standardized)\
-    \ | \n| * | Wildcard for all events | \n\n\n## Webhook Request Body\n\nThe webhook\
-    \ POST request body will contain the following json parameters:\n\n- `event` the\
-    \ event that triggered the callback (e.g. `DocumentFile.Received`)\n- `transaction_id`\
-    \ a unique UUID representing the event\n- `payload` additional event specific\
-    \ parameters\n\n## Webhook Signatures\n\nAll of our outgoing webhook requests\
-    \ contain a `X-Fincura-Signature` header which has been signed by a tenant specific\
-    \ key. This allows a 3rd party to validate requests are from Fincura's servers.\n\
-    \nThe header contains a list of comma seperated key value pairs:\n\n- `t` - UTC\
-    \ timestamp of the request\n- `uuid` - the UUID of the webhook record\n- `v1`\
-    \ - signature of the message [(HMAC_SHA256)](https://en.wikipedia.org/wiki/HMAC)\n\
+    \ | \n| DocumentFile.Error | Error processing DocumentFile | \n| BulkFile.Received\
+    \ | Bulk File saved/received to the Fincura Platform | \n| BulkFile.Processing\
+    \ | Bulk File is being processed by the Fincura Pipeline | \n| BulkFile.Processed\
+    \ | Bulk File has completed processing | \n| BulkFile.Error | Error processing\
+    \ BulkFile | \n| * | Wildcard for all events | \n\n\n## Webhook Request Body\n\
+    \nThe webhook POST request body will contain the following json parameters:\n\n\
+    - `event` the event that triggered the callback (e.g. `DocumentFile.Received`)\n\
+    - `transaction_id` a unique UUID representing the event\n- `payload` additional\
+    \ event specific parameters\n\n## Webhook Signatures\n\nAll of our outgoing webhook\
+    \ requests contain a `X-Fincura-Signature` header which has been signed by a tenant\
+    \ specific key. This allows a 3rd party to validate requests are from Fincura's\
+    \ servers.\n\nThe header contains a list of comma seperated key value pairs:\n\
+    \n- `t` - UTC timestamp of the request\n- `uuid` - the UUID of the webhook record\n\
+    - `v1` - signature of the message [(HMAC_SHA256)](https://en.wikipedia.org/wiki/HMAC)\n\
     \n### Obtaining the Tenant Signing Key\n\nSee: [Get Tenant Settings](#operation/readTenantSettings)\
     \ which returns a `webhook_signing_key`\n\n### Calculating the Message Signature\n\
     \nThe webhook message signature is calculated by joining the `timestamp` of the\
@@ -201,19 +209,19 @@ paths:
       x-accepts: application/json
     post:
       description: "Add a new file to Fincura for processing.\n\nThe minimal document\
-        \ creation request requires just a borrower_uuid and the media_type of the\
-        \ file to process.\n\n\n    POST /v1/document-file HTTP/1.1\n    Host: api.fincura.com\n\
-        \    Accept: application/json\n    Authorization: Bearer eyJ0e...nFTRKTbcg\n\
-        \    Content-Type: application/json\n\n    {\n        \"borrower_uuid\": \"\
-        6e64724a-25fc-4e1a-8071-1ef29845ab1d\",\n        \"media_type\": \"application/pdf\"\
-        \"\n    }\n    \n\nThe above request will create a new document record in\
-        \ Fincura and return a url to send the file to, as seen below.\n\n    {\n\
-        \        \"uuid\": \"fb5a2c2b-d3fa-4015-a801-a01e44503d94\",\n        \"upload_url\"\
-        : \"https://upload.fincura.com/fb5a2c2b-d3fa-4015-a801-a01e44503d94/document.pdf?signature=mWFg4xsgm4EtFEt\"\
+        \ creation request requires just a `borrower_uuid` and the `media_type` of\
+        \ the file to process.\n\n\n    POST /v1/document-file HTTP/1.1\n    Host:\
+        \ api.fincura.com\n    Accept: application/json\n    Authorization: Bearer\
+        \ eyJ0e...nFTRKTbcg\n    Content-Type: application/json\n\n    {\n       \
+        \ \"borrower_uuid\": \"6e64724a-25fc-4e1a-8071-1ef29845ab1d\",\n        \"\
+        media_type\": \"application/pdf\"\n    }\n    \n\nThe above request will create\
+        \ a new document record in Fincura and return a url to send the file to, as\
+        \ seen below.\n\n    {\n        \"uuid\": \"db74e98d-038e-4c8f-acf3-d06eb6f60fd3\"\
+        ,\n        \"upload_url\": \"https://upload.fincura.com/db74e98d-038e-4c8f-acf3-d06eb6f60fd3/document.pdf?signature=mWFg4xsgm4EtFEt\"\
         \n    }\n\nIn a subsequent request, the file can be sent to the `upload_url`\
         \ via [HTTP PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT).\
         \ The `Content-Length` and `Content-Type` headers are required. The `Content-Type`\
-        \ should match the `media_type` from the previous request.\n\n    PUT /fb5a2c2b-d3fa-4015-a801-a01e44503d94/document.pdf?signature=mWFg4xsgm4EtFEt\
+        \ should match the `media_type` from the previous request.\n\n    PUT /db74e98d-038e-4c8f-acf3-d06eb6f60fd3/document.pdf?signature=mWFg4xsgm4EtFEt\
         \ HTTP/1.1\n    Host: upload.fincura.com\n    Content-Length: 18828\n    Content-Type:\
         \ application/pdf\n    \n    {FILE  DATA}\n\nFincura will begin processing\
         \ the file once it has been completely uploaded.\n\nAdditional fields described\
@@ -302,7 +310,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DocumentFileRead'
-      summary: Get the status of a submitted DocumentFile
+      summary: Get a DocumentFile
+      tags:
+      - Files
+      x-accepts: application/json
+  /v1/bulk-file/{uuid}:
+    get:
+      description: Retrieve a bulk file submitted to Fincura
+      operationId: retrieveBulkFile
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkFileRead'
+      summary: Retrieve a BulkFile
       tags:
       - Files
       x-accepts: application/json
@@ -1112,6 +1142,49 @@ paths:
       - Api-Key
       x-contentType: application/json
       x-accepts: application/json
+  /v1/bulk-file:
+    post:
+      description: "Add a new file to Fincura that maps to many borrowers. Requires\
+        \ use of a specific file processor per file format. Speak with you Fincura\
+        \ account manager about available options on your account.\n\n\n    POST /v1/bulk-file\
+        \ HTTP/1.1\n    Host: api.fincura.com\n    Accept: application/json\n    Authorization:\
+        \ Bearer eyJ0e...nFTRKTbcg\n    Content-Type: application/json\n\n    {\n\
+        \        \"processor_key\": \"6e64724a-25fc-4e1a-8071-1ef29845ab1d\",\n  \
+        \      \"media_type\": \"application/pdf\"\"\n    }\n    \n\nThe above request\
+        \ will create a new document record in Fincura and return a url to send the\
+        \ file to, as seen below.\n\n    {\n        \"uuid\": \"b901469b-8e9e-480c-bd03-186662dd5988\"\
+        ,\n        \"upload_url\": \"https://upload.fincura.com/b901469b-8e9e-480c-bd03-186662dd5988/document.pdf?signature=mWFg4xsgm4EtFEt\"\
+        \n    }\n\nIn a subsequent request, the file can be sent to the `upload_url`\
+        \ via [HTTP PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT).\
+        \ The `Content-Length` and `Content-Type` headers are required. The `Content-Type`\
+        \ should match the `media_type` from the previous request.\n\n    PUT /b901469b-8e9e-480c-bd03-186662dd5988/document.pdf?signature=mWFg4xsgm4EtFEt\
+        \ HTTP/1.1\n    Host: upload.fincura.com\n    Content-Length: 18828\n    Content-Type:\
+        \ application/pdf\n    \n    {FILE  DATA}\n\nFincura will begin processing\
+        \ the file once it has been completely uploaded."
+      operationId: createBulkFile
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkFileCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkFileCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkFileCreate'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkFileCreate'
+      summary: Submit a new BulkFile
+      tags:
+      - Files
+      x-contentType: application/json
+      x-accepts: application/json
   /v1/embedded-workflow:
     post:
       description: Returns a URL to an HTML webapp to complete document parsing pipeline
@@ -1326,6 +1399,68 @@ components:
           type: object
       required:
       - borrower_uuid
+      type: object
+    BulkFileRead:
+      example:
+        filename: filename
+        media_type: application/pdf
+        external_id: external_id
+        created_date: 2000-01-23T04:56:07.000+00:00
+        document_files:
+        - document_files
+        - document_files
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        processor_key: processor_key
+        status: status
+        custom_attributes: '{}'
+      properties:
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          readOnly: true
+          type: string
+        created_date:
+          format: date-time
+          readOnly: true
+          type: string
+        media_type:
+          description: '[MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type)
+            of the file'
+          enum:
+          - application/pdf
+          - application/x-pdf
+          - application/vnd.ms-excel
+          - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          - application/vnd.ms-excel.sheet.macroEnabled.12
+          - image/png
+          - image/gif
+          - image/jpeg
+          type: string
+          writeOnly: true
+        filename:
+          description: Used to reference the original filename. Defaults to `document.{MEDIA
+            TYPE FILE EXTENSION}` e.g. fye_2020.pdf
+          maxLength: 200
+          type: string
+        document_files:
+          items:
+            type: string
+          readOnly: true
+          type: array
+        processor_key:
+          description: Key of custom processor
+          type: string
+        external_id:
+          description: External ID is used to uniquely identify a record from your
+            system in our system. Must be unique across records.
+          maxLength: 255
+          type: string
+        custom_attributes:
+          type: object
+      required:
+      - media_type
       type: object
     Borrower:
       example:
@@ -1865,6 +2000,11 @@ components:
           - DocumentFile.Processing
           - DocumentFile.HumanRequired
           - DocumentFile.SpreadComplete
+          - DocumentFile.Error
+          - BulkFile.Received
+          - BulkFile.Processing
+          - BulkFile.Processed
+          - BulkFile.Error
           - '*'
           type: string
         webhook_url:
@@ -2052,10 +2192,12 @@ components:
         borrower_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         statements:
         - end_date: 2000-01-23
-          report_type: INCOME_STATEMENT
+          form_type: INCOME_STATEMENT
+          tax_year: 1910
           start_date: 2000-01-23
         - end_date: 2000-01-23
-          report_type: INCOME_STATEMENT
+          form_type: INCOME_STATEMENT
+          tax_year: 1910
           start_date: 2000-01-23
         external_id: external_id
         created_date: 2000-01-23T04:56:07.000+00:00
@@ -2086,6 +2228,7 @@ components:
           - application/x-pdf
           - application/vnd.ms-excel
           - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          - application/vnd.ms-excel.sheet.macroEnabled.12
           - image/png
           - image/gif
           - image/jpeg
@@ -2097,6 +2240,14 @@ components:
           maxLength: 200
           type: string
         statements:
+          description: "\nBy default, any document submitted to Fincura will be scanned\
+            \ for Income Statement and Balance Sheet information.\n\nThe engine can\
+            \ also be pointed at Tax Returns by setting a statement object with a\
+            \ `form_type` and `tax_year`. Supported tax form types: `1065`, `1040`,\
+            \ `1120`, `1120S`\n\n```\n{\n    \"borrower_uuid\": \"6e...845ab1d\",\n\
+            \    \"media_type\": \"application/pdf\",\n    \"statements\": [\n   \
+            \     {\n          \"form_type\": \"1065\"\n          \"tax_year\": 2019\n\
+            \        }\n      ]\n}\n```\n    \n\n"
           items:
             $ref: '#/components/schemas/DocumentFileCreate_statements'
           type: array
@@ -2120,6 +2271,71 @@ components:
           type: object
       required:
       - borrower_uuid
+      - media_type
+      type: object
+    BulkFileCreate:
+      example:
+        filename: filename
+        media_type: application/pdf
+        upload_url: https://openapi-generator.tech
+        external_id: external_id
+        created_date: 2000-01-23T04:56:07.000+00:00
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        processor_key: processor_key
+        status: status
+        custom_attributes: '{}'
+      properties:
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          readOnly: true
+          type: string
+        created_date:
+          format: date-time
+          readOnly: true
+          type: string
+        media_type:
+          description: '[MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type)
+            of the file'
+          enum:
+          - application/pdf
+          - application/x-pdf
+          - application/vnd.ms-excel
+          - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          - application/vnd.ms-excel.sheet.macroEnabled.12
+          - image/png
+          - image/gif
+          - image/jpeg
+          type: string
+          writeOnly: true
+        filename:
+          description: Used to reference the original filename. Defaults to `document.{MEDIA
+            TYPE FILE EXTENSION}` e.g. fye_2020.pdf
+          maxLength: 200
+          type: string
+        processor_key:
+          description: Key of custom processor
+          type: string
+        upload_url:
+          format: uri
+          maxLength: 2500
+          pattern: "^(?:[a-z0-9\\.\\-\\+]*)://(?:[^\\s:@/]+(?::[^\\s:@/]*)?@)?(?:(?:25[0-5]|2[0-4]\\\
+            d|[0-1]?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}|\\[[0-9a-f:\\\
+            .]+\\]|([a-z¡-\uffff0-9](?:[a-z¡-\uffff0-9-]{0,61}[a-z¡-\uffff0-9])?(?:\\\
+            .(?!-)[a-z¡-\uffff0-9-]{1,63}(?<!-))*\\.(?!-)(?:[a-z¡-\uffff-]{2,63}|xn--[a-z0-9]{1,59})(?<!-)\\\
+            .?|localhost))(?::\\d{2,5})?(?:[/?#][^\\s]*)?\\Z"
+          readOnly: true
+          type: string
+        external_id:
+          description: External ID is used to uniquely identify a record from your
+            system in our system. Must be unique across records.
+          maxLength: 255
+          type: string
+        custom_attributes:
+          type: object
+      required:
       - media_type
       type: object
     inline_response_200:
@@ -3305,18 +3521,19 @@ components:
     DocumentFileCreate_statements:
       example:
         end_date: 2000-01-23
-        report_type: INCOME_STATEMENT
+        form_type: INCOME_STATEMENT
+        tax_year: 1910
         start_date: 2000-01-23
       properties:
-        report_type:
+        form_type:
           default: INCOME_STATEMENT
           enum:
           - INCOME_STATEMENT
           - BALANCE_SHEET
           - "1065"
+          - "1040"
           - "1120"
           - 1120S
-          - OTHER
           type: string
         start_date:
           format: date
@@ -3324,6 +3541,11 @@ components:
         end_date:
           format: date
           type: string
+        tax_year:
+          description: Required for tax forms
+          maximum: 2020
+          minimum: 1901
+          type: integer
       type: object
   securitySchemes:
     API_Key:

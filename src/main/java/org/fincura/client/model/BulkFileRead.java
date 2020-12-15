@@ -23,18 +23,16 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.fincura.client.model.DocumentFileCreateStatements;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * DocumentFileCreate
+ * BulkFileRead
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-15T17:13:42.707Z[GMT]")
-public class DocumentFileCreate {
+public class BulkFileRead {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
   private UUID uuid;
@@ -46,10 +44,6 @@ public class DocumentFileCreate {
   public static final String SERIALIZED_NAME_CREATED_DATE = "created_date";
   @SerializedName(SERIALIZED_NAME_CREATED_DATE)
   private OffsetDateTime createdDate;
-
-  public static final String SERIALIZED_NAME_BORROWER_UUID = "borrower_uuid";
-  @SerializedName(SERIALIZED_NAME_BORROWER_UUID)
-  private UUID borrowerUuid;
 
   /**
    * [MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of the file
@@ -118,13 +112,13 @@ public class DocumentFileCreate {
   @SerializedName(SERIALIZED_NAME_FILENAME)
   private String filename;
 
-  public static final String SERIALIZED_NAME_STATEMENTS = "statements";
-  @SerializedName(SERIALIZED_NAME_STATEMENTS)
-  private List<DocumentFileCreateStatements> statements = null;
+  public static final String SERIALIZED_NAME_DOCUMENT_FILES = "document_files";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT_FILES)
+  private List<String> documentFiles = null;
 
-  public static final String SERIALIZED_NAME_UPLOAD_URL = "upload_url";
-  @SerializedName(SERIALIZED_NAME_UPLOAD_URL)
-  private URI uploadUrl;
+  public static final String SERIALIZED_NAME_PROCESSOR_KEY = "processor_key";
+  @SerializedName(SERIALIZED_NAME_PROCESSOR_KEY)
+  private String processorKey;
 
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "external_id";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
@@ -177,29 +171,7 @@ public class DocumentFileCreate {
 
 
 
-  public DocumentFileCreate borrowerUuid(UUID borrowerUuid) {
-    
-    this.borrowerUuid = borrowerUuid;
-    return this;
-  }
-
-   /**
-   * UUID of the borrower for this file. (see [Borrowers](#tag/Borrowers))
-   * @return borrowerUuid
-  **/
-  @ApiModelProperty(required = true, value = "UUID of the borrower for this file. (see [Borrowers](#tag/Borrowers))")
-
-  public UUID getBorrowerUuid() {
-    return borrowerUuid;
-  }
-
-
-  public void setBorrowerUuid(UUID borrowerUuid) {
-    this.borrowerUuid = borrowerUuid;
-  }
-
-
-  public DocumentFileCreate mediaType(MediaTypeEnum mediaType) {
+  public BulkFileRead mediaType(MediaTypeEnum mediaType) {
     
     this.mediaType = mediaType;
     return this;
@@ -221,7 +193,7 @@ public class DocumentFileCreate {
   }
 
 
-  public DocumentFileCreate filename(String filename) {
+  public BulkFileRead filename(String filename) {
     
     this.filename = filename;
     return this;
@@ -244,52 +216,44 @@ public class DocumentFileCreate {
   }
 
 
-  public DocumentFileCreate statements(List<DocumentFileCreateStatements> statements) {
-    
-    this.statements = statements;
-    return this;
-  }
-
-  public DocumentFileCreate addStatementsItem(DocumentFileCreateStatements statementsItem) {
-    if (this.statements == null) {
-      this.statements = new ArrayList<DocumentFileCreateStatements>();
-    }
-    this.statements.add(statementsItem);
-    return this;
-  }
-
    /**
-   *  By default, any document submitted to Fincura will be scanned for Income Statement and Balance Sheet information.  The engine can also be pointed at Tax Returns by setting a statement object with a &#x60;form_type&#x60; and &#x60;tax_year&#x60;. Supported tax form types: &#x60;1065&#x60;, &#x60;1040&#x60;, &#x60;1120&#x60;, &#x60;1120S&#x60;  &#x60;&#x60;&#x60; {     \&quot;borrower_uuid\&quot;: \&quot;6e...845ab1d\&quot;,     \&quot;media_type\&quot;: \&quot;application/pdf\&quot;,     \&quot;statements\&quot;: [         {           \&quot;form_type\&quot;: \&quot;1065\&quot;           \&quot;tax_year\&quot;: 2019         }       ] } &#x60;&#x60;&#x60;       
-   * @return statements
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = " By default, any document submitted to Fincura will be scanned for Income Statement and Balance Sheet information.  The engine can also be pointed at Tax Returns by setting a statement object with a `form_type` and `tax_year`. Supported tax form types: `1065`, `1040`, `1120`, `1120S`  ``` {     \"borrower_uuid\": \"6e...845ab1d\",     \"media_type\": \"application/pdf\",     \"statements\": [         {           \"form_type\": \"1065\"           \"tax_year\": 2019         }       ] } ```       ")
-
-  public List<DocumentFileCreateStatements> getStatements() {
-    return statements;
-  }
-
-
-  public void setStatements(List<DocumentFileCreateStatements> statements) {
-    this.statements = statements;
-  }
-
-
-   /**
-   * Get uploadUrl
-   * @return uploadUrl
+   * Get documentFiles
+   * @return documentFiles
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public URI getUploadUrl() {
-    return uploadUrl;
+  public List<String> getDocumentFiles() {
+    return documentFiles;
   }
 
 
 
 
-  public DocumentFileCreate externalId(String externalId) {
+  public BulkFileRead processorKey(String processorKey) {
+    
+    this.processorKey = processorKey;
+    return this;
+  }
+
+   /**
+   * Key of custom processor
+   * @return processorKey
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Key of custom processor")
+
+  public String getProcessorKey() {
+    return processorKey;
+  }
+
+
+  public void setProcessorKey(String processorKey) {
+    this.processorKey = processorKey;
+  }
+
+
+  public BulkFileRead externalId(String externalId) {
     
     this.externalId = externalId;
     return this;
@@ -312,7 +276,7 @@ public class DocumentFileCreate {
   }
 
 
-  public DocumentFileCreate customAttributes(Object customAttributes) {
+  public BulkFileRead customAttributes(Object customAttributes) {
     
     this.customAttributes = customAttributes;
     return this;
@@ -343,37 +307,35 @@ public class DocumentFileCreate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DocumentFileCreate documentFileCreate = (DocumentFileCreate) o;
-    return Objects.equals(this.uuid, documentFileCreate.uuid) &&
-        Objects.equals(this.status, documentFileCreate.status) &&
-        Objects.equals(this.createdDate, documentFileCreate.createdDate) &&
-        Objects.equals(this.borrowerUuid, documentFileCreate.borrowerUuid) &&
-        Objects.equals(this.mediaType, documentFileCreate.mediaType) &&
-        Objects.equals(this.filename, documentFileCreate.filename) &&
-        Objects.equals(this.statements, documentFileCreate.statements) &&
-        Objects.equals(this.uploadUrl, documentFileCreate.uploadUrl) &&
-        Objects.equals(this.externalId, documentFileCreate.externalId) &&
-        Objects.equals(this.customAttributes, documentFileCreate.customAttributes);
+    BulkFileRead bulkFileRead = (BulkFileRead) o;
+    return Objects.equals(this.uuid, bulkFileRead.uuid) &&
+        Objects.equals(this.status, bulkFileRead.status) &&
+        Objects.equals(this.createdDate, bulkFileRead.createdDate) &&
+        Objects.equals(this.mediaType, bulkFileRead.mediaType) &&
+        Objects.equals(this.filename, bulkFileRead.filename) &&
+        Objects.equals(this.documentFiles, bulkFileRead.documentFiles) &&
+        Objects.equals(this.processorKey, bulkFileRead.processorKey) &&
+        Objects.equals(this.externalId, bulkFileRead.externalId) &&
+        Objects.equals(this.customAttributes, bulkFileRead.customAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uuid, status, createdDate, borrowerUuid, mediaType, filename, statements, uploadUrl, externalId, customAttributes);
+    return Objects.hash(uuid, status, createdDate, mediaType, filename, documentFiles, processorKey, externalId, customAttributes);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentFileCreate {\n");
+    sb.append("class BulkFileRead {\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
-    sb.append("    borrowerUuid: ").append(toIndentedString(borrowerUuid)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
-    sb.append("    statements: ").append(toIndentedString(statements)).append("\n");
-    sb.append("    uploadUrl: ").append(toIndentedString(uploadUrl)).append("\n");
+    sb.append("    documentFiles: ").append(toIndentedString(documentFiles)).append("\n");
+    sb.append("    processorKey: ").append(toIndentedString(processorKey)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    customAttributes: ").append(toIndentedString(customAttributes)).append("\n");
     sb.append("}");

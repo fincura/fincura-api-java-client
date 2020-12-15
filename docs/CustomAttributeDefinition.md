@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | [**UUID**](UUID.md) |  |  [optional] [readonly]
+**uuid** | **UUID** |  |  [optional] [readonly]
 **name** | **String** |  | 
 **key** | **String** |  |  [optional] [readonly]
 **description** | **String** |  |  [optional]

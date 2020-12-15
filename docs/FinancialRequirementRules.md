@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | [**UUID**](UUID.md) |  |  [optional] [readonly]
-**thresholdValue** | [**BigDecimal**](BigDecimal.md) |  | 
+**uuid** | **UUID** |  |  [optional] [readonly]
+**thresholdValue** | **BigDecimal** |  | 
 **comparer** | [**ComparerEnum**](#ComparerEnum) |  |  [optional]
-**startDate** | [**LocalDate**](LocalDate.md) |  | 
-**endDate** | [**LocalDate**](LocalDate.md) |  |  [optional]
+**startDate** | **LocalDate** |  | 
+**endDate** | **LocalDate** |  |  [optional]
 
 
 

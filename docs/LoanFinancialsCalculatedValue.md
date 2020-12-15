@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**BigDecimal**](BigDecimal.md) |  |  [optional] [readonly]
+**value** | **BigDecimal** |  |  [optional] [readonly]
 
 
 

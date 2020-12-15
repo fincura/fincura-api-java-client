@@ -21,119 +21,98 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.net.URI;
+import java.util.UUID;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for LoanBorrowerInfo
+ * Model tests for BulkFileCreate
  */
-public class LoanBorrowerInfoTest {
-    private final LoanBorrowerInfo model = new LoanBorrowerInfo();
+public class BulkFileCreateTest {
+    private final BulkFileCreate model = new BulkFileCreate();
 
     /**
-     * Model tests for LoanBorrowerInfo
+     * Model tests for BulkFileCreate
      */
     @Test
-    public void testLoanBorrowerInfo() {
-        // TODO: test LoanBorrowerInfo
+    public void testBulkFileCreate() {
+        // TODO: test BulkFileCreate
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'uuid'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void uuidTest() {
+        // TODO: test uuid
     }
 
     /**
-     * Test the property 'industry'
+     * Test the property 'status'
      */
     @Test
-    public void industryTest() {
-        // TODO: test industry
+    public void statusTest() {
+        // TODO: test status
     }
 
     /**
-     * Test the property 'naicsCode'
+     * Test the property 'createdDate'
      */
     @Test
-    public void naicsCodeTest() {
-        // TODO: test naicsCode
+    public void createdDateTest() {
+        // TODO: test createdDate
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'mediaType'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
+    public void mediaTypeTest() {
+        // TODO: test mediaType
     }
 
     /**
-     * Test the property 'city'
+     * Test the property 'filename'
      */
     @Test
-    public void cityTest() {
-        // TODO: test city
+    public void filenameTest() {
+        // TODO: test filename
     }
 
     /**
-     * Test the property 'state'
+     * Test the property 'processorKey'
      */
     @Test
-    public void stateTest() {
-        // TODO: test state
+    public void processorKeyTest() {
+        // TODO: test processorKey
     }
 
     /**
-     * Test the property 'zipcode'
+     * Test the property 'uploadUrl'
      */
     @Test
-    public void zipcodeTest() {
-        // TODO: test zipcode
+    public void uploadUrlTest() {
+        // TODO: test uploadUrl
     }
 
     /**
-     * Test the property 'country'
+     * Test the property 'externalId'
      */
     @Test
-    public void countryTest() {
-        // TODO: test country
+    public void externalIdTest() {
+        // TODO: test externalId
     }
 
     /**
-     * Test the property 'email'
+     * Test the property 'customAttributes'
      */
     @Test
-    public void emailTest() {
-        // TODO: test email
-    }
-
-    /**
-     * Test the property 'companyNotes'
-     */
-    @Test
-    public void companyNotesTest() {
-        // TODO: test companyNotes
-    }
-
-    /**
-     * Test the property 'dunBradstreetScore'
-     */
-    @Test
-    public void dunBradstreetScoreTest() {
-        // TODO: test dunBradstreetScore
-    }
-
-    /**
-     * Test the property 'paynetScore'
-     */
-    @Test
-    public void paynetScoreTest() {
-        // TODO: test paynetScore
+    public void customAttributesTest() {
+        // TODO: test customAttributes
     }
 
 }

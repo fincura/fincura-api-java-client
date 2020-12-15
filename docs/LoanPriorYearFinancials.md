@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**statementDate** | [**LocalDate**](LocalDate.md) |  |  [optional] [readonly]
+**statementDate** | **LocalDate** |  |  [optional] [readonly]
 **preparationType** | **String** |  |  [optional] [readonly]
-**netIncome** | [**BigDecimal**](BigDecimal.md) |  |  [optional] [readonly]
+**netIncome** | **BigDecimal** |  |  [optional] [readonly]
 
 
 

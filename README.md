@@ -1,8 +1,8 @@
 # fincura-api-java-client
 
-Fincura Integration API
-- API version: 1.2.5
-  - Build date: 2020-11-16T22:01:35.618Z[GMT]
+Fincura API
+- API version: 1.2.6
+  - Build date: 2020-12-15T17:13:42.707Z[GMT]
 
 This [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) allows you to interact with the Fincura processing and insights engine. 
 
@@ -17,6 +17,7 @@ This API uses API keys generated from a Fincura User account. To get access to y
 | PDF File | .pdf | `application/pdf` , `application/x-pdf` |
 | Excel File | .xls | `application/vnd.ms-excel`  |
 | Excel File | .xlsx | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`  |
+| Excel File | .xlsm | `application/vnd.ms-excel.sheet.macroEnabled.12`  |
 | PNG Image | .png | `image/png`  |
 | GIF Image | .gif | `image/gif`  |
 | JPG Image | .jpg, .jpeg | `image/jpeg`  |
@@ -65,7 +66,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.fincura</groupId>
   <artifactId>fincura-api-java-client</artifactId>
-  <version>1.2.5</version>
+  <version>1.2.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -75,7 +76,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.fincura:fincura-api-java-client:1.2.5"
+compile "org.fincura:fincura-api-java-client:1.2.6"
 ```
 
 ### Others
@@ -88,7 +89,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/fincura-api-java-client-1.2.5.jar`
+* `target/fincura-api-java-client-1.2.6.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -98,54 +99,29 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import java.net.URI;
 import org.fincura.client.ApiClient;
 import org.fincura.client.ApiException;
 import org.fincura.client.Configuration;
 import org.fincura.client.auth.*;
 import org.fincura.client.models.*;
 import org.fincura.client.api.ApiKeyApi;
-import org.fincura.client.api.BorrowersApi;
-import org.fincura.client.api.FilesApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.fincura.com");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure HTTP bearer authorization: API_Key
-    HttpBearerAuth clientAuth = (HttpBearerAuth) defaultClient.getAuthentication("API_Key");
+    HttpBearerAuth API_Key = (HttpBearerAuth) defaultClient.getAuthentication("API_Key");
+    API_Key.setBearerToken("BEARER TOKEN");
 
+    ApiKeyApi apiInstance = new ApiKeyApi(defaultClient);
+    ApiKey apiKey = new ApiKey(); // ApiKey | 
     try {
-      // Refresh apiKey (with refresh token)
-      ApiKeyApi apiKeyInstance = new ApiKeyApi(defaultClient);
-      ApiKey apiKey = new ApiKey();
-      apiKey.setRefreshToken("API REFRESH TOKEN")
-      apiKey.setTenantId("TENANT_ID")
-      apiKey = apiKeyInstance.refreshApiKey(apiKey);
-      clientAuth.setBearerToken(apiKey.getAccessToken());
-
-      // Create Borrower record
-      Borrower borrower = new Borrower();
-      borrower.setName('Brand New Borrower');
-      BorrowersApi borrowersApiInstance = new BorrowersApi(defaultClient);
-      borrower = borrowersApiInstance.createBorrower(borrower);
-
-      // Create DocumentFile record
-      FilesApi filesApiInstance = new FilesApi(defaultClient);
-      DocumentFileCreate documentFile = new DocumentFile();
-      documentFile.setBorrowerUuid(borrower.getUuid());
-      documentFile.setMediaType(MediaTypeEnum.APPLICATION_PDF);
-      documentFile = filesApiInstance.createDocumentFile(documentFile);
-
-
-      // Upload File for storage and processing
-      URI uri = documentFile.getUploadUrl();
-      // PUT file to uri and file will be processed
-      // see: https://api.fincura.com/v1/redoc/#operation/createDocumentFile
-
-
+      ApiKey result = apiInstance.refreshApiKey(apiKey);
+      System.out.println(result);
     } catch (ApiException e) {
+      System.err.println("Exception when calling ApiKeyApi#refreshApiKey");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -175,10 +151,12 @@ Class | Method | HTTP request | Description
 *DataViewsApi* | [**retrieveMostRecentDataView**](docs/DataViewsApi.md#retrieveMostRecentDataView) | **GET** /v1/data-view/most_recent/{borrower_uuid} | Get the most recent period of data for a Borrower
 *EmbeddedWorkflowsApi* | [**createEmbeddedWorkflow**](docs/EmbeddedWorkflowsApi.md#createEmbeddedWorkflow) | **POST** /v1/embedded-workflow | 
 *EmbeddedWorkflowsApi* | [**retrieveEmbeddedWorkflow**](docs/EmbeddedWorkflowsApi.md#retrieveEmbeddedWorkflow) | **GET** /v1/embedded-workflow/{uuid} | 
+*FilesApi* | [**createBulkFile**](docs/FilesApi.md#createBulkFile) | **POST** /v1/bulk-file | Submit a new BulkFile
 *FilesApi* | [**createDocumentFile**](docs/FilesApi.md#createDocumentFile) | **POST** /v1/document-file | Submit a new DocumentFile
 *FilesApi* | [**destroyDocumentFile**](docs/FilesApi.md#destroyDocumentFile) | **DELETE** /v1/document-file/{uuid} | Delete a DocumentFile
 *FilesApi* | [**listDocumentFiles**](docs/FilesApi.md#listDocumentFiles) | **GET** /v1/document-file | List DocumentFile records
-*FilesApi* | [**retrieveDocumentFile**](docs/FilesApi.md#retrieveDocumentFile) | **GET** /v1/document-file/{uuid} | Get the status of a submitted DocumentFile
+*FilesApi* | [**retrieveBulkFile**](docs/FilesApi.md#retrieveBulkFile) | **GET** /v1/bulk-file/{uuid} | Retrieve a BulkFile
+*FilesApi* | [**retrieveDocumentFile**](docs/FilesApi.md#retrieveDocumentFile) | **GET** /v1/document-file/{uuid} | Get a DocumentFile
 *LoansApi* | [**createLoan**](docs/LoansApi.md#createLoan) | **POST** /v1/loan | Create a new Loan
 *LoansApi* | [**destroyLoan**](docs/LoansApi.md#destroyLoan) | **DELETE** /v1/loan/{uuid} | Delete a Loan
 *LoansApi* | [**listLoans**](docs/LoansApi.md#listLoans) | **GET** /v1/loan | List Loans
@@ -202,6 +180,8 @@ Class | Method | HTTP request | Description
 
  - [ApiKey](docs/ApiKey.md)
  - [Borrower](docs/Borrower.md)
+ - [BulkFileCreate](docs/BulkFileCreate.md)
+ - [BulkFileRead](docs/BulkFileRead.md)
  - [CustomAttributeDefinition](docs/CustomAttributeDefinition.md)
  - [DataView](docs/DataView.md)
  - [DataViewCalculatedValue](docs/DataViewCalculatedValue.md)
@@ -256,5 +236,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-
+support@fincura.com
 

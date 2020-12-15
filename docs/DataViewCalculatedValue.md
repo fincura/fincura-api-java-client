@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**BigDecimal**](BigDecimal.md) |  | 
+**value** | **BigDecimal** |  | 
 **error** | **String** |  | 
 **errorMessage** | **String** |  | 
 **footnotes** | **String** |  | 

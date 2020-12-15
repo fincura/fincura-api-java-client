@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **String** |  | 
-**statementDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
+**statementDate** | **OffsetDateTime** |  | 
 **reportingInterval** | **String** |  | 
 **preparationType** | **String** |  | 
 **preparedBy** | **String** |  | 

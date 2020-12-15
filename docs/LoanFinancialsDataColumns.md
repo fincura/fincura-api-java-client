@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **header** | **String** |  |  [optional] [readonly]
-**statementDate** | [**LocalDate**](LocalDate.md) |  |  [optional] [readonly]
+**statementDate** | **LocalDate** |  |  [optional] [readonly]
 **reportingPeriod** | **String** |  |  [optional] [readonly]
 **preparationType** | **String** |  |  [optional] [readonly]
 **monthsInInterval** | **Integer** |  |  [optional] [readonly]

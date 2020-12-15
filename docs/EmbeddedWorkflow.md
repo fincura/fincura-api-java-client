@@ -6,15 +6,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | [**UUID**](UUID.md) |  |  [optional] [readonly]
-**documentFileUuid** | [**UUID**](UUID.md) | UUID of the DocumentFile for this workflow | 
+**uuid** | **UUID** |  |  [optional] [readonly]
+**documentFileUuid** | **UUID** | UUID of the DocumentFile for this workflow | 
 **embedType** | [**EmbedTypeEnum**](#EmbedTypeEnum) |  |  [optional]
-**createdDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional] [readonly]
+**createdDate** | **OffsetDateTime** |  |  [optional] [readonly]
 **exitStep** | [**ExitStepEnum**](#ExitStepEnum) |  |  [optional]
-**redirectUrl** | [**URI**](URI.md) |  |  [optional]
+**redirectUrl** | **URI** |  |  [optional]
 **uiControls** | [**EmbeddedWorkflowUiControls**](EmbeddedWorkflowUiControls.md) |  |  [optional]
 **loaded** | **Boolean** |  |  [optional] [readonly]
-**loadWorkflowUrl** | [**URI**](URI.md) |  |  [optional] [readonly]
+**loadWorkflowUrl** | **URI** |  |  [optional] [readonly]
 
 
 
