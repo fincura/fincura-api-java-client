@@ -13,8 +13,6 @@
 
 package org.fincura.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,70 +21,77 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.fincura.client.model.PortalLinkStatementTypes;
+import org.threeten.bp.LocalDate;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
 
 /**
- * LoanFinancialsCalculatedValue
+ * Model tests for PortalLink
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-27T00:03:41.356Z[GMT]")
-public class LoanFinancialsCalculatedValue {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private BigDecimal value;
+public class PortalLinkTest {
+    private final PortalLink model = new PortalLink();
 
-
-   /**
-   * Get value
-   * minimum: -1000000000000000000
-   * maximum: 1000000000000000000
-   * @return value
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getValue() {
-    return value;
-  }
-
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Model tests for PortalLink
+     */
+    @Test
+    public void testPortalLink() {
+        // TODO: test PortalLink
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'uuid'
+     */
+    @Test
+    public void uuidTest() {
+        // TODO: test uuid
     }
-    LoanFinancialsCalculatedValue loanFinancialsCalculatedValue = (LoanFinancialsCalculatedValue) o;
-    return Objects.equals(this.value, loanFinancialsCalculatedValue.value);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(value);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoanFinancialsCalculatedValue {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'reportingInterval'
+     */
+    @Test
+    public void reportingIntervalTest() {
+        // TODO: test reportingInterval
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    /**
+     * Test the property 'fromDate'
+     */
+    @Test
+    public void fromDateTest() {
+        // TODO: test fromDate
+    }
+
+    /**
+     * Test the property 'toDate'
+     */
+    @Test
+    public void toDateTest() {
+        // TODO: test toDate
+    }
+
+    /**
+     * Test the property 'statementTypes'
+     */
+    @Test
+    public void statementTypesTest() {
+        // TODO: test statementTypes
+    }
+
+    /**
+     * Test the property 'portalUrl'
+     */
+    @Test
+    public void portalUrlTest() {
+        // TODO: test portalUrl
+    }
 
 }
-

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **status** | **String** |  |  [optional] [readonly]
 **createdDate** | **OffsetDateTime** |  |  [optional] [readonly]
 **mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | [MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of the file | 
-**filename** | **String** | Used to reference the original filename. Defaults to &#x60;document.{MEDIA TYPE FILE EXTENSION}&#x60; e.g. fye_2020.pdf |  [optional]
+**filename** | **String** | Used to reference the original filename. Defaults to &#x60;document.{MEDIA TYPE FILE EXTENSION}&#x60; e.g. fye_2021.pdf |  [optional]
 **processorKey** | **String** | Key of custom processor |  [optional]
 **uploadUrl** | **URI** |  |  [optional] [readonly]
 **externalId** | **String** | External ID is used to uniquely identify a record from your system in our system. Must be unique across records. |  [optional]

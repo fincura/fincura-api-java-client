@@ -1,8 +1,8 @@
 # fincura-api-java-client
 
 Fincura API
-- API version: 1.2.6
-  - Build date: 2020-12-15T17:13:42.707Z[GMT]
+- API version: 1.3.0
+  - Build date: 2021-01-27T00:03:41.356Z[GMT]
 
 This [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) allows you to interact with the Fincura processing and insights engine. 
 
@@ -66,7 +66,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.fincura</groupId>
   <artifactId>fincura-api-java-client</artifactId>
-  <version>1.2.6</version>
+  <version>1.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -76,7 +76,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.fincura:fincura-api-java-client:1.2.6"
+compile "org.fincura:fincura-api-java-client:1.3.0"
 ```
 
 ### Others
@@ -89,7 +89,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/fincura-api-java-client-1.2.6.jar`
+* `target/fincura-api-java-client-1.3.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *BorrowersApi* | [**createBorrower**](docs/BorrowersApi.md#createBorrower) | **POST** /v1/borrower | Create a new Borrower
 *BorrowersApi* | [**listBorrowers**](docs/BorrowersApi.md#listBorrowers) | **GET** /v1/borrower | List Borrowers
 *BorrowersApi* | [**partialUpdateBorrower**](docs/BorrowersApi.md#partialUpdateBorrower) | **PATCH** /v1/borrower/{uuid} | Update a Borrower
+*BorrowersApi* | [**portalLinkBorrower**](docs/BorrowersApi.md#portalLinkBorrower) | **POST** /v1/borrower/{uuid}/portal_link | Generate a Borrower portal link
 *BorrowersApi* | [**retrieveBorrower**](docs/BorrowersApi.md#retrieveBorrower) | **GET** /v1/borrower/{uuid} | Retrieve a Borrower
 *CustomAttributesApi* | [**createCustomAttributeDefinition**](docs/CustomAttributesApi.md#createCustomAttributeDefinition) | **POST** /v1/custom-attribute-definition | Create a CustomAttributeDefinition
 *CustomAttributesApi* | [**destroyCustomAttributeDefinition**](docs/CustomAttributesApi.md#destroyCustomAttributeDefinition) | **DELETE** /v1/custom-attribute-definition/{uuid} | Delete a CustomAttributeDefinition
@@ -217,6 +218,8 @@ Class | Method | HTTP request | Description
  - [LoanGuarantors](docs/LoanGuarantors.md)
  - [LoanPeriods](docs/LoanPeriods.md)
  - [LoanPriorYearFinancials](docs/LoanPriorYearFinancials.md)
+ - [PortalLink](docs/PortalLink.md)
+ - [PortalLinkStatementTypes](docs/PortalLinkStatementTypes.md)
  - [Portfolio](docs/Portfolio.md)
  - [TenantSettings](docs/TenantSettings.md)
  - [Webhook](docs/Webhook.md)

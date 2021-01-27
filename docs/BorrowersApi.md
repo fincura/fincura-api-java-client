@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createBorrower**](BorrowersApi.md#createBorrower) | **POST** /v1/borrower | Create a new Borrower
 [**listBorrowers**](BorrowersApi.md#listBorrowers) | **GET** /v1/borrower | List Borrowers
 [**partialUpdateBorrower**](BorrowersApi.md#partialUpdateBorrower) | **PATCH** /v1/borrower/{uuid} | Update a Borrower
+[**portalLinkBorrower**](BorrowersApi.md#portalLinkBorrower) | **POST** /v1/borrower/{uuid}/portal_link | Generate a Borrower portal link
 [**retrieveBorrower**](BorrowersApi.md#retrieveBorrower) | **GET** /v1/borrower/{uuid} | Retrieve a Borrower
 
 
@@ -216,6 +217,73 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+
+<a name="portalLinkBorrower"></a>
+# **portalLinkBorrower**
+> PortalLink portalLinkBorrower(uuid, portalLink)
+
+Generate a Borrower portal link
+
+### Example
+```java
+// Import classes:
+import org.fincura.client.ApiClient;
+import org.fincura.client.ApiException;
+import org.fincura.client.Configuration;
+import org.fincura.client.auth.*;
+import org.fincura.client.models.*;
+import org.fincura.client.api.BorrowersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: API_Key
+    HttpBearerAuth API_Key = (HttpBearerAuth) defaultClient.getAuthentication("API_Key");
+    API_Key.setBearerToken("BEARER TOKEN");
+
+    BorrowersApi apiInstance = new BorrowersApi(defaultClient);
+    String uuid = "uuid_example"; // String | 
+    PortalLink portalLink = new PortalLink(); // PortalLink | 
+    try {
+      PortalLink result = apiInstance.portalLinkBorrower(uuid, portalLink);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BorrowersApi#portalLinkBorrower");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **String**|  |
+ **portalLink** | [**PortalLink**](PortalLink.md)|  | [optional]
+
+### Return type
+
+[**PortalLink**](PortalLink.md)
+
+### Authorization
+
+[API_Key](../README.md#API_Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
 
 <a name="retrieveBorrower"></a>
 # **retrieveBorrower**

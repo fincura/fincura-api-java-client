@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **uiControls** | [**EmbeddedWorkflowUiControls**](EmbeddedWorkflowUiControls.md) |  |  [optional]
 **loaded** | **Boolean** |  |  [optional] [readonly]
 **loadWorkflowUrl** | **URI** |  |  [optional] [readonly]
+**externalUserId** | **String** | Id to identify the user performing the work (e.g. email or username) |  [optional]
+**externalUserLabel** | **String** | Human readable label to identify the user performing the work (e.g. name) |  [optional]
 
 
 

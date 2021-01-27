@@ -25,60 +25,92 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * LoanPeriods
+ * PortalLinkStatementTypes
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-27T00:03:41.356Z[GMT]")
-public class LoanPeriods {
-  public static final String SERIALIZED_NAME_REPORTING_PERIOD = "reporting_period";
-  @SerializedName(SERIALIZED_NAME_REPORTING_PERIOD)
-  private String reportingPeriod;
-
-  public static final String SERIALIZED_NAME_PREPARATION_TYPE = "preparation_type";
-  @SerializedName(SERIALIZED_NAME_PREPARATION_TYPE)
-  private String preparationType;
-
-
-  public LoanPeriods reportingPeriod(String reportingPeriod) {
+public class PortalLinkStatementTypes {
+  /**
+   * Gets or Sets formType
+   */
+  @JsonAdapter(FormTypeEnum.Adapter.class)
+  public enum FormTypeEnum {
+    INCOME_STATEMENT("INCOME_STATEMENT"),
     
-    this.reportingPeriod = reportingPeriod;
+    BALANCE_SHEET("BALANCE_SHEET"),
+    
+    CASH_FLOW_STATEMENT("CASH_FLOW_STATEMENT"),
+    
+    _1065("1065"),
+    
+    _1040("1040"),
+    
+    _1120("1120"),
+    
+    _1120S("1120S");
+
+    private String value;
+
+    FormTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormTypeEnum fromValue(String value) {
+      for (FormTypeEnum b : FormTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FORM_TYPE = "form_type";
+  @SerializedName(SERIALIZED_NAME_FORM_TYPE)
+  private FormTypeEnum formType = FormTypeEnum.INCOME_STATEMENT;
+
+
+  public PortalLinkStatementTypes formType(FormTypeEnum formType) {
+    
+    this.formType = formType;
     return this;
   }
 
    /**
-   * Get reportingPeriod
-   * @return reportingPeriod
+   * Get formType
+   * @return formType
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public String getReportingPeriod() {
-    return reportingPeriod;
+  public FormTypeEnum getFormType() {
+    return formType;
   }
 
 
-  public void setReportingPeriod(String reportingPeriod) {
-    this.reportingPeriod = reportingPeriod;
-  }
-
-
-  public LoanPeriods preparationType(String preparationType) {
-    
-    this.preparationType = preparationType;
-    return this;
-  }
-
-   /**
-   * Get preparationType
-   * @return preparationType
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public String getPreparationType() {
-    return preparationType;
-  }
-
-
-  public void setPreparationType(String preparationType) {
-    this.preparationType = preparationType;
+  public void setFormType(FormTypeEnum formType) {
+    this.formType = formType;
   }
 
 
@@ -90,22 +122,20 @@ public class LoanPeriods {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoanPeriods loanPeriods = (LoanPeriods) o;
-    return Objects.equals(this.reportingPeriod, loanPeriods.reportingPeriod) &&
-        Objects.equals(this.preparationType, loanPeriods.preparationType);
+    PortalLinkStatementTypes portalLinkStatementTypes = (PortalLinkStatementTypes) o;
+    return Objects.equals(this.formType, portalLinkStatementTypes.formType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportingPeriod, preparationType);
+    return Objects.hash(formType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoanPeriods {\n");
-    sb.append("    reportingPeriod: ").append(toIndentedString(reportingPeriod)).append("\n");
-    sb.append("    preparationType: ").append(toIndentedString(preparationType)).append("\n");
+    sb.append("class PortalLinkStatementTypes {\n");
+    sb.append("    formType: ").append(toIndentedString(formType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -11,20 +11,41 @@
  */
 
 
-package org.fincura.client.auth;
+package org.fincura.client.model;
 
-import org.fincura.client.Pair;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import java.util.Map;
-import java.util.List;
 
-public interface Authentication {
+/**
+ * Model tests for PortalLinkStatementTypes
+ */
+public class PortalLinkStatementTypesTest {
+    private final PortalLinkStatementTypes model = new PortalLinkStatementTypes();
+
     /**
-     * Apply authentication settings to header and query params.
-     *
-     * @param queryParams List of query parameters
-     * @param headerParams Map of header parameters
-     * @param cookieParams Map of cookie parameters
+     * Model tests for PortalLinkStatementTypes
      */
-    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams);
+    @Test
+    public void testPortalLinkStatementTypes() {
+        // TODO: test PortalLinkStatementTypes
+    }
+
+    /**
+     * Test the property 'formType'
+     */
+    @Test
+    public void formTypeTest() {
+        // TODO: test formType
+    }
+
 }
